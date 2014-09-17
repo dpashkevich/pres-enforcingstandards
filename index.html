@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Effective ways of enforcing coding standards &mdash; by Dmitry Pashkevich</title>
+
+		<meta name="description" content="">
+		<meta name="author" content="Dmitry Pashkevich">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<style>
+			.reveal .important {
+				color: orange;
+				font-family: "League Gothic", Impact, sans-serif;
+			}
+
+			.reveal strong {
+				color: #FF7A7A;
+			}
+		</style>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Effective ways of enforcing coding standards</h1>
+					<p>
+						<small>by <a href="http://dpashk.com" target="_blank">Dmitry Pashkevich</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+					<p>
+						TODO
+					</p>
+				</section>
+
+				<section>
+					<h2>Intro</h2>
+
+					<p>Why?</p>
+					<p>What?</p>
+				</section>
+
+				<section>
+					<h2>Gotta have code standards!</h2>
+
+					<ul>
+						<li class="fragment">Agree upon</li>
+						<li class="fragment"><strong>Maintain</strong></li>
+						<li class="fragment">Refer to</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Why?</h2>
+					<!-- my beliefs -->
+
+					<ul>
+						<li class="fragment">Consistency</li>
+						<li class="fragment">Avoid some errors</li>
+						<li class="fragment">Less thinking</li>
+						<li class="fragment">Easier to read</li>
+					</ul>
+
+					<aside class="notes">
+						<p>Why have CS?</p>
+
+						<ul>
+							<li>Less time spent thinking about how things should be written (at a low level!)</li>
+							<li>
+								Easier to read and modify code that you’re not familiar with<br>
+								(newcomers, people switching teams, yourself in several months/years)
+							</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>What?</h2>
+
+					<ul>
+						<li class="fragment">Language conventions (HTML, CSS, JS, Scala, SQL)</li>
+						<li class="fragment">Filesystem layout</li>
+						<li class="fragment">Version control</li>
+						<li class="fragment">Workflow</li>
+					</ul>
+
+					<aside class="notes">
+						<p>What things can be declared in standards?</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>The reality</h2>
+					<h3>Conventions are hard to follow</h3>
+					<p class="fragment"><em>Manually...</em></p>
+				</section>
+
+				<section>
+					<h2>Conventions are hard to follow</h3>
+					<h3>Why?</h2>
+
+					<ul>
+						<li class="fragment">We forget</li>
+						<li class="fragment">Own habits</li>
+						<li class="fragment">Existing code</li>
+						<li class="fragment">Too much work</li>
+					</ul>
+
+					<aside class="notes">
+						<ul>
+							<li>We forget, hard to memorize (code standards can be dozens of pages long - ex. isobar)</li>
+							<li>We have our own habits</li>
+							<li>Existing code can give a bad example</li>
+							<li>Too much work! (e.g. require alphabetizing CSS properties)</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2 class="important">
+						Every guideline should cost less to implement than the benefit it brings
+					</h2>
+				</section>
+
+				<section data-transition="none">
+					<p class="important" style="font-size: 1.2em">
+						Every guideline should cost less to implement than the benefit it brings
+					</p>
+
+					<h2>So what do we do?</h2>
+
+					<ul>
+						<li class="fragment">Not follow a guideline</li>
+						<li class="fragment"><strong>Bring down its cost</strong></li>
+					</ul>
+
+					<aside class="notes">
+						<p>We have at least two options here...</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Tools to the rescue!</h2>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
