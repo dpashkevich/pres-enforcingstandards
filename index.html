@@ -175,7 +175,145 @@
 
 				<section>
 					<h2>Tools to the rescue!</h2>
+					<img src="img/timeallen.png" class="stretch" alt="Tim Allen with a hammer">
 				</section>
+
+				<section>
+					<h2>Run automatically, get feedback early</h2>
+					<p>jshint as a good example</p>
+
+					plain console run isn't very helpful or efficient during your flow;
+					beyond console output - you need immediate feedback during your work process!
+
+					run automatically! provide feedback as early as possible
+					<aside class="notes">
+						We'll start with the most obvious, jshint just as an example.
+						<p>running jshint in commandline is not nearly as useful as having editor integration; </p>
+						May be saying obvious things, but I'm trying to generalize. Apply these concepts to each tool you try to use.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Configurable</h2>
+
+					configure it! (filter out the noise (conventions that you don't care about or not ready to adopt or disagree with), adapt to your agreed upon coding styles)
+
+					<p>Express as much of your coding convention as possible through configuration. It's more efficient than writing/updating style docs</p>
+					<aside class="notes">
+						We'll start with the most obvious
+					</aside>
+				</section>
+
+				<section>
+					<h2>Shared configuration!</h2>
+					Check .jshintrc into your repo(s) so that everybody is on the same page, keep up to date, have changes propagate to everyone automatically
+				</section>
+
+				<section>
+					<h2>Make exceptions</h2>
+
+					make exceptions!
+					<aside class="note">
+						As
+					</aside>
+				</section>
+
+				<section>
+					<h2>EditorConfig</h2>
+				</section>
+
+				<section>
+					<h2>Dealing with whitespace</h2>
+					flags in git commands
+				</section>
+
+				<section>
+					<h2>git</h2>
+					<ul>
+						<li>.gitignore</li>
+						<li>.gitattributes</li>
+						<li>configuration
+							<ul>
+								<li>auto rebase on pull</li>
+								<li>branch tracking</li>
+							</ul>
+						</li>
+						<li>hooks (prevent committing crap)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Honorable mentions</h2>
+
+					<ul>
+						<li>configure your editor (e.g. max line length)</li>
+						<li>.sublime-project (e.g. ignore folders)</li>
+						<li>share scripts</li>
+						<li>workflow scripts (e.g. git flow)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Armed with tools, now what?</h2>
+				</section>
+
+				<section>
+					<h2>Write NEW code properly</h2>
+					no excuse here...
+				</section>
+
+				<section>
+					<h2>Refactor just the parts you work on</h2>
+
+					(day-to-day-rule; do plan major refactors)
+				</section>
+
+				<section>
+					<h2>Preserve localized standards</h2>
+
+					<ul>
+						<li>Third-party code</li>
+						<li>Parts actively developed (e.g. cake)</li>
+					</ul>
+
+					<p>BTW, can place jshintrc in subdirectories, supports inherit</p>
+				</section>
+
+				<section>
+					<h2>Code reviews</h2>
+					<h3>Speak up if it smells!</h3>
+
+					<aside class="notes">
+						Code reviews: speak up if you see a "code smell", don't be shy
+					</aside>
+				</section>
+
+				<section>
+					<!-- MAYBE drop that slide -->
+					<h2>General rule</h2>
+
+					<ul>
+						<li>Make code readable and clear</li>
+						<li>Make code like it's written by one person</li>
+						<li>Leave the code better than it was</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Pseudocode</h2>
+
+					<pre><code class="javascript">
+    while(!codingStandards.followed) {
+        reason = programmer.whyNot();
+        if(reason.isAcceptable) {
+            codingStandards.patch(reason);
+        } else {
+            programmer.fixCode(feedback);
+        }
+    }
+					</code></pre>
+				</section>
+
 			</div>
 
 		</div>
