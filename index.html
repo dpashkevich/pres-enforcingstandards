@@ -23,9 +23,22 @@
 				font-family: "League Gothic", Impact, sans-serif;
 			}
 
+			.reveal h3 {
+				color: orange;
+			}
+
 			.reveal strong {
 				color: #FF7A7A;
 			}
+
+			.reveal code {
+				background: #3F3F3F;
+			}
+			.reveal code.inline {
+				font-size: 0.9em;
+				padding: 0 0.3em;
+			}
+
 		</style>
 
 		<!-- For syntax highlighting -->
@@ -75,7 +88,7 @@
 				</section>
 
 				<section>
-					<h2>Gotta have code standards!</h2>
+					<h2>Gotta have coding standards!</h2>
 
 					<ul>
 						<li class="fragment">Agree upon</li>
@@ -142,7 +155,7 @@
 
 					<aside class="notes">
 						<ul>
-							<li>We forget, hard to memorize (code standards can be dozens of pages long - ex. isobar)</li>
+							<li>We forget, hard to memorize (coding standards can be dozens of pages long - ex. isobar)</li>
 							<li>We have our own habits</li>
 							<li>Existing code can give a bad example</li>
 							<li>Too much work! (e.g. require alphabetizing CSS properties)</li>
@@ -175,113 +188,175 @@
 
 				<section>
 					<h2>Tools to the rescue!</h2>
-					<img src="img/timeallen.png" class="stretch" alt="Tim Allen with a hammer">
-				</section>
 
-				<section>
-					<h2>Run automatically, get feedback early</h2>
-					<p>jshint as a good example</p>
+					<img src="img/timallen.jpg" class="stretch" alt="Tim Allen with a hammer">
 
-					plain console run isn't very helpful or efficient during your flow;
-					beyond console output - you need immediate feedback during your work process!
-
-					run automatically! provide feedback as early as possible
-					<aside class="notes">
-						We'll start with the most obvious, jshint just as an example.
-						<p>running jshint in commandline is not nearly as useful as having editor integration; </p>
-						May be saying obvious things, but I'm trying to generalize. Apply these concepts to each tool you try to use.
+					<aside class="notes" data-markdown>
+						- Tools help bring down the cost
+						- But you have to use them efficiently!
 					</aside>
 				</section>
 
 				<section>
-					<h2>Configurable</h2>
+					<h2>Tools rule #1</h2>
+					<h3>Run automatically, get feedback early</h3>
 
-					configure it! (filter out the noise (conventions that you don't care about or not ready to adopt or disagree with), adapt to your agreed upon coding styles)
+					<p>TODO: ST3+jshint screenshot</p>
 
-					<p>Express as much of your coding convention as possible through configuration. It's more efficient than writing/updating style docs</p>
-					<aside class="notes">
-						We'll start with the most obvious
+					<aside class="notes" data-markdown>
+						- // jshint as a good example
+
+						- Manually running a command in the terminal is not nearly as helpful or efficient as getting real-time feedback in your editor.
+
+						- Immediate feedback will let you catch errors before you make more of them
+
+						- All this may sound obvious, but these concepts should be applied to each tool you try to use
 					</aside>
 				</section>
 
 				<section>
-					<h2>Shared configuration!</h2>
-					Check .jshintrc into your repo(s) so that everybody is on the same page, keep up to date, have changes propagate to everyone automatically
+					<h2>Tools rule #2</h2>
+					<h3>Configurable</h3>
+
+					<pre><code class="json">
+{
+    "curly"   : true,
+    "eqeqeq"  : false,
+    "eqnull"  : true,
+    "gcl"     : true,
+    "immed"   : true,
+    "loopfunc": true,
+    "maxerr"  : 1000,
+    "shadow"  : true,
+    "sub"     : true
+}
+					</code></pre>
+
+					<p>TODO: better config</p>
+
+					<aside class="notes" data-markdown>
+						- filter out the noise (stuff we don't care about)
+                        - adapt to our agreed upon coding styles
+                        - try to express as much of the convention as possible through config
+					</aside>
+				</section>
+
+				<section>
+					<h2>Tools rule #3</h2>
+					<h3>Shared configuration!</h3>
+
+                    <img src="img/configfiles.png" class="stretch" alt="Config files in project root">
+
+                    <aside class="notes" data-markdown>
+                        - Check `.jshintrc` into your repo(s) so that everybody is on the same page
+                        - keep up to date
+                        - have changes propagate to everyone automatically
+                    </aside>
+
 				</section>
 
 				<section>
 					<h2>Make exceptions</h2>
 
-					make exceptions!
-					<aside class="note">
-						As
+					<pre><code class="javascript">
+/*jshint loopfunc:true */
+					</code></pre>
+
+					<p>TODO: good example</p>
+
+					<aside class="notes" data-markdown>
+						- There will always be exceptions
+						- You don't have to see the same warnings again and again
+						- With this, reaching 0 linter warnings becomes possible!
 					</aside>
 				</section>
 
 				<section>
-					<h2>EditorConfig</h2>
+					<h2>Whitespace consistency</h2>
+					<a href="http://editorconfig.org/">.editorconfig</a>
+					<pre><code class="ini" data-trim>
+# top-most EditorConfig file
+root = true
+
+# defaults for all files
+[*]
+charset = utf-8
+indent_style = tab
+end_of_line = lf
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# python loves spaces
+[*.py]
+indent_style = space
+					</code></pre>
 				</section>
 
 				<section>
-					<h2>Dealing with whitespace</h2>
-					flags in git commands
+					<h2>Handling whitespace changes</h2>
+					<pre><code>
+git diff -w
+git blame -w
+git merge -Xignore-space-change
+git rebase --ignore-space-change
+					</code></pre>
 				</section>
 
 				<section>
-					<h2>git</h2>
+					<h2>Handling whitespace changes (cont)</h2>
+					<h3>Put whitespace changes on a separate commit</h2>
+
+					<p>TODO: insert screenshot</p>
+				</section>
+
+				<section>
+					<h2>git configuration</h2>
 					<ul>
 						<li>.gitignore</li>
-						<li>.gitattributes</li>
-						<li>configuration
-							<ul>
-								<li>auto rebase on pull</li>
-								<li>branch tracking</li>
-							</ul>
+						<li>.gitattributes (<code class="inline">* text=auto</code>)</li>
+						<li>Common configuration
+							<pre><code class="bash" data-trim>
+# do a rebase on git pull
+git config --global branch.autosetuprebase always
+# push only current branch to upstream by default
+git config --global push.default upstream
+							</code></pre>
 						</li>
-						<li>hooks (prevent committing crap)</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Honorable mentions</h2>
-
-					<ul>
-						<li>configure your editor (e.g. max line length)</li>
-						<li>.sublime-project (e.g. ignore folders)</li>
-						<li>share scripts</li>
-						<li>workflow scripts (e.g. git flow)</li>
+						<li>Hooks (e.g. prevent committing debug code)</li>
+						<li>Workflow scripts and aliases (e.g. <a href="https://github.com/nvie/gitflow">git flow</a>)</li>
 					</ul>
 				</section>
 
 				<section>
 					<h2>Armed with tools, now what?</h2>
+
+					<img src="img/armed.jpg" class="stretch" alt="Rambo armed and dangerous">
+
+					<aside class="notes" data-markdown>
+						- Go berserk and try to change the entire code base at once?
+					</aside>
 				</section>
 
 				<section>
-					<h2>Write NEW code properly</h2>
-					no excuse here...
-				</section>
+					<h2>Adoption strategy</h2>
 
-				<section>
-					<h2>Refactor just the parts you work on</h2>
+					<ol>
+						<li class="fragment">Write NEW code properly</li>
+						<li class="fragment">Refactor the parts you work on</li>
+						<li class="fragment">Preserve localized standards</li>
+					</ol>
 
-					(day-to-day-rule; do plan major refactors)
-				</section>
-
-				<section>
-					<h2>Preserve localized standards</h2>
-
-					<ul>
-						<li>Third-party code</li>
-						<li>Parts actively developed (e.g. cake)</li>
-					</ul>
-
-					<p>BTW, can place jshintrc in subdirectories, supports inherit</p>
+					<aside class="notes" data-markdown>
+						No excuse not to write new code properly!
+					</aside>
 				</section>
 
 				<section>
 					<h2>Code reviews</h2>
 					<h3>Speak up if it smells!</h3>
+
+					<img src="img/smells.jpg" class="stretch" alt="something smells fishy, and it certainly isn't fish">
 
 					<aside class="notes">
 						Code reviews: speak up if you see a "code smell", don't be shy
@@ -293,14 +368,24 @@
 					<h2>General rule</h2>
 
 					<ul>
-						<li>Make code readable and clear</li>
-						<li>Make code like it's written by one person</li>
-						<li>Leave the code better than it was</li>
+						<li class="fragment">Make code readable and clear</li>
+						<li class="fragment">...like it's written by one person</li>
+						<li class="fragment">Leave the code better than it was</li>
 					</ul>
 				</section>
 
 				<section>
-					<h2>Pseudocode</h2>
+					<h2 class="important">Action items</h2>
+
+					<ol>
+						<li>Install necessary tools (chef?)</li>
+						<li>Check in dotfiles</li>
+						<li>Write compliant code</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Enforcing standards: pseudocode</h2>
 
 					<pre><code class="javascript">
     while(!codingStandards.followed) {
