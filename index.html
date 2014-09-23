@@ -198,10 +198,16 @@
 				</section>
 
 				<section>
+					<h2>Bare CLI not very useful</h2>
+
+					<img src="img/lintercmdline.png" class="stretch" alt="Command line output of JSHint">
+				</section>
+
+				<section>
 					<h2>Tools rule #1</h2>
 					<h3>Run automatically, get feedback early</h3>
 
-					<p>TODO: ST3+jshint screenshot</p>
+					<img src="img/inlinelinting.png" class="stretch" alt="Inline JSHint linting in ST">
 
 					<aside class="notes" data-markdown>
 						- // jshint as a good example
@@ -215,29 +221,50 @@
 				</section>
 
 				<section>
+					<h2>Too much feedback?</h2>
+
+					<img src="img/toomuchwarnings.png" class="stretch" alt="Too much linter warnings!">
+				</section>
+
+				<section>
 					<h2>Tools rule #2</h2>
 					<h3>Configurable</h3>
 
-					<pre><code class="json">
+					<pre><code class="js" data-trim>
 {
-    "curly"   : true,
-    "eqeqeq"  : false,
-    "eqnull"  : true,
-    "gcl"     : true,
-    "immed"   : true,
-    "loopfunc": true,
-    "maxerr"  : 1000,
-    "shadow"  : true,
-    "sub"     : true
+    "asi"     : true,   // suppress warnings about semicolons
+    "curly"   : true,   // always put curly braces around blocks
+    "eqeqeq"  : false,  // allow non-strict comparisons
+    "latedef" : true,   // prohibits using a variable before definition
+    "eqnull"  : true,   // alllow == null
+    "newcap"  : true,   // capitalize constructor names
+    "camelcase": true,  // enforce camelCase or UPPER_CASE
+    "expr"    : true,   // suppress warning "Expected an assignment..."
+    "gcl"     : true,   // compat with Google Closure Linter
+    "immed"   : false,  // don't be bothered by IIF syntax
+    "sub"     : true,   // don't complain about [] vs dot notation
+    "unused"  : "vars",  // warn about unused variables
+    "maxlen"  : 120,    // maximum length of a line
+    "maxerr"  : 1000
 }
 					</code></pre>
-
-					<p>TODO: better config</p>
 
 					<aside class="notes" data-markdown>
 						- filter out the noise (stuff we don't care about)
                         - adapt to our agreed upon coding styles
                         - try to express as much of the convention as possible through config
+					</aside>
+				</section>
+
+				<section>
+					<h2>Make exceptions</h2>
+
+					<img src="img/jshintoverride.png" class="stretch" alt="An example of overriding JSHint rules with inline directives">
+
+					<aside class="notes" data-markdown>
+						- There will always be exceptions
+						- You don't have to see the same warnings again and again
+						- With this, reaching 0 linter warnings becomes possible!
 					</aside>
 				</section>
 
@@ -253,22 +280,6 @@
                         - have changes propagate to everyone automatically
                     </aside>
 
-				</section>
-
-				<section>
-					<h2>Make exceptions</h2>
-
-					<pre><code class="javascript">
-/*jshint loopfunc:true */
-					</code></pre>
-
-					<p>TODO: good example</p>
-
-					<aside class="notes" data-markdown>
-						- There will always be exceptions
-						- You don't have to see the same warnings again and again
-						- With this, reaching 0 linter warnings becomes possible!
-					</aside>
 				</section>
 
 				<section>
@@ -307,15 +318,15 @@ git rebase --ignore-space-change
 					<h2>Handling whitespace changes (cont)</h2>
 					<h3>Put whitespace changes on a separate commit</h2>
 
-					<p>TODO: insert screenshot</p>
+					<img src="img/diffinwhitespace.png" class="stretch" alt="Ignore whitespace and stage selected regions in git-cola">
 				</section>
 
 				<section>
 					<h2>git configuration</h2>
 					<ul>
-						<li>.gitignore</li>
-						<li>.gitattributes (<code class="inline">* text=auto</code>)</li>
-						<li>Common configuration
+						<li class="fragment">.gitignore</li>
+						<li class="fragment">.gitattributes (<code class="inline">* text=auto</code>)</li>
+						<li class="fragment">Common configuration
 							<pre><code class="bash" data-trim>
 # do a rebase on git pull
 git config --global branch.autosetuprebase always
@@ -323,8 +334,8 @@ git config --global branch.autosetuprebase always
 git config --global push.default upstream
 							</code></pre>
 						</li>
-						<li>Hooks (e.g. prevent committing debug code)</li>
-						<li>Workflow scripts and aliases (e.g. <a href="https://github.com/nvie/gitflow">git flow</a>)</li>
+						<li class="fragment">Hooks (e.g. prevent committing debug code)</li>
+						<li class="fragment">Workflow scripts and aliases (e.g. <a href="https://github.com/nvie/gitflow">git flow</a>)</li>
 					</ul>
 				</section>
 
@@ -418,6 +429,8 @@ git config --global push.default upstream
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				maxScale: 1.4,
 
 				// Parallax scrolling
 				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
