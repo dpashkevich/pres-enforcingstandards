@@ -75,16 +75,13 @@
 
 				<section>
 					<h2>Agenda</h2>
-					<p>
-						TODO
-					</p>
-				</section>
 
-				<section>
-					<h2>Intro</h2>
-
-					<p>Why?</p>
-					<p>What?</p>
+					<ul>
+						<li>Importance</li>
+						<li>Challenges</li>
+						<li>Tools</li>
+						<li>Strategy</li>
+					</ul>
 				</section>
 
 				<section>
@@ -92,9 +89,16 @@
 
 					<ul>
 						<li class="fragment">Agree upon</li>
-						<li class="fragment"><strong>Maintain</strong></li>
+						<li class="fragment">Document</li>
 						<li class="fragment">Refer to</li>
+						<li class="fragment"><strong>Maintain</strong></li>
 					</ul>
+
+					<aside class="notes">
+						- Agree and document in one place
+						- Place we can refer to
+						- Maintain
+					</aside>
 				</section>
 
 				<section>
@@ -127,12 +131,11 @@
 					<ul>
 						<li class="fragment">Language conventions (HTML, CSS, JS, Scala, SQL)</li>
 						<li class="fragment">Filesystem layout</li>
-						<li class="fragment">Version control</li>
-						<li class="fragment">Workflow</li>
+						<li class="fragment">Version control workflow</li>
 					</ul>
 
 					<aside class="notes">
-						<p>What things can be declared in standards?</p>
+						<p>What things can be covered in standards?</p>
 					</aside>
 				</section>
 
@@ -142,9 +145,9 @@
 					<p class="fragment"><em>Manually...</em></p>
 				</section>
 
-				<section>
-					<h2>Conventions are hard to follow</h3>
-					<h3>Why?</h2>
+				<section data-transition="none">
+					<p class="important">Conventions are hard to follow</p>
+					<h2>Why?</h2>
 
 					<ul>
 						<li class="fragment">We forget</li>
@@ -193,14 +196,18 @@
 
 					<aside class="notes" data-markdown>
 						- Tools help bring down the cost
-						- But you have to use them efficiently!
+						- But you have to use them efficiently!!!
 					</aside>
 				</section>
 
 				<section>
-					<h2>Bare CLI not very useful</h2>
+					<h2>JSHint: Bare CLI not very useful</h2>
 
 					<img src="img/lintercmdline.png" class="stretch" alt="Command line output of JSHint">
+
+					<aside class="notes" data-markdown>
+						- Manually running a command in the terminal is not nearly as helpful or efficient as getting real-time feedback in your editor.
+					</aside>
 				</section>
 
 				<section>
@@ -210,13 +217,14 @@
 					<img src="img/inlinelinting.png" class="stretch" alt="Inline JSHint linting in ST">
 
 					<aside class="notes" data-markdown>
+						- code quality tool must run automatically,
+						don't have to remember to run it
+
+						- Real-time feedback early on will let you catch errors before you make more of them
+
 						- // jshint as a good example
 
-						- Manually running a command in the terminal is not nearly as helpful or efficient as getting real-time feedback in your editor.
-
-						- Immediate feedback will let you catch errors before you make more of them
-
-						- All this may sound obvious, but these concepts should be applied to each tool you try to use
+						- these concepts should be applied to each tool you try to use
 					</aside>
 				</section>
 
@@ -251,8 +259,10 @@
 
 					<aside class="notes" data-markdown>
 						- filter out the noise (stuff we don't care about)
-                        - adapt to our agreed upon coding styles
-                        - try to express as much of the convention as possible through config
+						- adapt to our agreed upon coding styles
+						- try to express as much of the convention as possible through config
+
+						Still an excuse: `there will always be exceptions!`
 					</aside>
 				</section>
 
@@ -277,14 +287,20 @@
                     <aside class="notes" data-markdown>
                         - Check `.jshintrc` into your repo(s) so that everybody is on the same page
                         - keep up to date
-                        - have changes propagate to everyone automatically
+                        - have changes propagate to everyone automatically, no announcements
                     </aside>
 
 				</section>
 
 				<section>
 					<h2>Whitespace consistency</h2>
-					<a href="http://editorconfig.org/">.editorconfig</a>
+
+					<img class="stretch" src="img/sowhitespace.jpg" alt="Doge loves whitespace">
+				</section>
+
+				<section>
+					<h2><a href="http://editorconfig.org/">.editorconfig</a></h2>
+
 					<pre><code class="ini" data-trim>
 # top-most EditorConfig file
 root = true
@@ -293,15 +309,20 @@ root = true
 [*]
 charset = utf-8
 indent_style = tab
-end_of_line = lf
 indent_size = 4
+end_of_line = lf
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-# python loves spaces
-[*.py]
+[*.scala]
 indent_style = space
+indent_size = 2
 					</code></pre>
+
+					<aside class="notes" data-markdown>
+						- A spec to help enforce whitespace consistency across the team
+						- Cool thing: you don't have to worry about whitespace settings yourself, even when you copy-paste code
+					</aside>
 				</section>
 
 				<section>
@@ -315,7 +336,7 @@ git rebase --ignore-space-change
 				</section>
 
 				<section>
-					<h2>Handling whitespace changes (cont)</h2>
+					<h2>Keep commits clean</h2>
 					<h3>Put whitespace changes on a separate commit</h2>
 
 					<img src="img/diffinwhitespace.png" class="stretch" alt="Ignore whitespace and stage selected regions in git-cola">
@@ -337,6 +358,13 @@ git config --global push.default upstream
 						<li class="fragment">Hooks (e.g. prevent committing debug code)</li>
 						<li class="fragment">Workflow scripts and aliases (e.g. <a href="https://github.com/nvie/gitflow">git flow</a>)</li>
 					</ul>
+
+					<aside class="notes" data-markdown>
+						- Part of vcs workflow conventions: git config
+						- gitattributes `* text=auto` (end-of-line normalization)
+						- Common config: saves everybody time
+						- Branching model: teams go extra mile
+					</aside>
 				</section>
 
 				<section>
@@ -359,13 +387,13 @@ git config --global push.default upstream
 					</ol>
 
 					<aside class="notes" data-markdown>
-						No excuse not to write new code properly!
+						- No excuse not to write new code properly!
+						- Rules can be overridden for subprojects
 					</aside>
 				</section>
 
 				<section>
-					<h2>Code reviews</h2>
-					<h3>Speak up if it smells!</h3>
+					<h2 class="important">Code reviews: Speak up if it smells!</h3>
 
 					<img src="img/smells.jpg" class="stretch" alt="something smells fishy, and it certainly isn't fish">
 
@@ -390,8 +418,9 @@ git config --global push.default upstream
 
 					<ol>
 						<li>Install necessary tools (chef?)</li>
+						<li>Install <a href="http://editorconfig.org/">.editorconfig</a> plugin</li>
 						<li>Linter tools for scala?</li>
-						<li>Check in dotfiles</li>
+						<li>Check in linter configs (branch: <code>dotfiles</code>)</li>
 						<li>Write compliant code</li>
 					</ol>
 				</section>
@@ -405,12 +434,15 @@ git config --global push.default upstream
         if(reason.isAcceptable) {
             codingStandards.patch(reason);
         } else {
-            programmer.fixCode(feedback);
+            programmer.forceComply(codingStandards);
         }
     }
 					</code></pre>
 				</section>
 
+				<section>
+					THANKS!
+				</section>
 			</div>
 
 		</div>
