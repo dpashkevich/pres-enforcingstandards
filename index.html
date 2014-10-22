@@ -59,7 +59,13 @@
 				box-sizing: border-box;
 			}
 				.reveal .lucid-logo-container img {
-					width: 40%;
+					width: 45%;
+				}
+				.reveal .lucid-logo-container img,
+				.reveal .lucid-logo-container img:hover {
+					border: none;
+					background-color: transparent;
+					box-shadow: none;
 				}
 
 			.reveal .column-container {
@@ -135,15 +141,14 @@
 
 					<div class="lucid-logo-container">
 						<a href="http://www.lucidchart.com">
-							<img src="img/chart_logo_ltbg.jpg" alt="Lucidchart">
+							<img src="img/chartlogo.png" alt="Lucidchart" style="margin-right: 2em;">
 						</a>
-						&nbsp;
 						<a href="http://www.lucidpress.com">
-							<img src="img/press_logo_ltbg.jpg" alt="Lucidpress">
+							<img src="img/presslogo.png" alt="Lucidpress">
 						</a>
 					</div>
 
-					<p>
+					<p class="fragment">
 						<strong>
 							We're hiring!<br>
 							<a href="https://www.golucid.co/" target="_blank">www.golucid.co</a>
@@ -483,6 +488,21 @@ git config --global push.default upstream
 				</section>
 
 				<section>
+					<h2>Enforcing standards: pseudocode</h2>
+
+					<pre><code class="javascript">
+    while(!codingStandards.followed) {
+        reason = programmer.whyNot();
+        if(reason.isAcceptable) {
+            codingStandards.patch(reason);
+        } else {
+            programmer.forceComply(codingStandards);
+        }
+    }
+					</code></pre>
+				</section>
+
+				<section>
 					<!-- MAYBE drop that slide -->
 					<h2>General rule</h2>
 
@@ -502,21 +522,6 @@ git config --global push.default upstream
 						<li>Check in linter configs (branch: <code>dotfiles</code>)</li>
 						<li>Write compliant code</li>
 					</ol>
-				</section>
-
-				<section>
-					<h2>Enforcing standards: pseudocode</h2>
-
-					<pre><code class="javascript">
-    while(!codingStandards.followed) {
-        reason = programmer.whyNot();
-        if(reason.isAcceptable) {
-            codingStandards.patch(reason);
-        } else {
-            programmer.forceComply(codingStandards);
-        }
-    }
-					</code></pre>
 				</section>
 
 				<section>
